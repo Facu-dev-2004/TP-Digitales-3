@@ -1,0 +1,19 @@
+{
+    "configurations": [
+        {
+            "name": "LPC1769",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${workspaceFolder}/Proyecto/Librerias/Drivers/inc",
+                "${workspaceFolder}/Proyecto/Librerias/CMSIS",
+                "${workspaceFolder}/Proyecto/src"
+            ],
+            "defines": [],
+            "compilerPath": "/opt/mcuxpresso-ide/ide/plugins/com.nxp.mcuxpresso.tools.linux_25.6.0.202501151204/tools/bin/arm-none-eabi-gcc",
+            "cStandard": "c11",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "linux-gcc-arm"
+        }
+    ],
+    "version": 4
+}

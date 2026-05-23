@@ -1,0 +1,9 @@
+CompileFlags:
+  Compiler: arm-none-eabi-gcc
+  Add:
+    - "-IProyecto/Librerias/Drivers/inc"
+    - "-IProyecto/Librerias/CMSIS"
+    - "-IProyecto/src"
+    - "--target=arm-none-eabi"
+    - "-mcpu=cortex-m3"
+    - "-mthumb"

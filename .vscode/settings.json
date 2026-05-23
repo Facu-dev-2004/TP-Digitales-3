@@ -1,0 +1,5 @@
+{
+    "clangd.arguments": [
+        "--query-driver=/opt/mcuxpresso-ide/**/arm-none-eabi-gcc"
+    ]
+}

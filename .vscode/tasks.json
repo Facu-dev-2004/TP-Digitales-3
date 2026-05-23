@@ -1,0 +1,29 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Compilar",
+            "type": "shell",
+            "command": "cd LPC_MAKE && make all",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$gcc"]
+        },
+        {
+            "label": "Compilar y Cargar (FLASH)",
+            "type": "shell",
+            "command": "cd LPC_MAKE && make flash",
+            "group": "build",
+            "dependsOn": "Compilar",
+            "problemMatcher": ["$gcc"]
+        },
+        {
+            "label": "Limpiar Proyecto",
+            "type": "shell",
+            "command": "cd LPC_MAKE && make clean",
+            "problemMatcher": []
+        }
+    ]
+}
