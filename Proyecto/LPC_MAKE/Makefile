@@ -1,7 +1,10 @@
-CC = /opt/mcuxpresso-ide/ide/plugins/com.nxp.mcuxpresso.tools.linux_25.6.0.202501151204/tools/bin/arm-none-eabi-gcc
-OBJCOPY = /opt/mcuxpresso-ide/ide/plugins/com.nxp.mcuxpresso.tools.linux_25.6.0.202501151204/tools/bin/arm-none-eabi-objcopy
-CHECKSUM = /opt/mcuxpresso-ide/ide/plugins/com.nxp.mcuxpresso.tools.bin.linux_25.6.0.202501151204/binaries/checksum
-LINKSERVER = /opt/linkserver/LinkServer
+# Rutas al compilador y herramientas. 
+# Si usas MCUXpresso en Windows y no están en el PATH, reemplaza por la ruta completa.
+# Ejemplo: CC = C:/nxp/MCUXpressoIDE.../tools/bin/arm-none-eabi-gcc
+CC = C:/PROGRA~2/ARMGNU~1/14EFD8~1.2RE/bin/arm-none-eabi-gcc.exe
+OBJCOPY = C:/PROGRA~2/ARMGNU~1/14EFD8~1.2RE/bin/arm-none-eabi-objcopy.exe
+CHECKSUM = powershell.exe -ExecutionPolicy Bypass -File lpc_checksum.ps1
+LINKSERVER = C:/nxp/LinkServer_26.5.59/LinkServer.exe
 
 # Directorios relativos a este Makefile (en LPC_MAKE/)
 PROJ_ROOT = ..
@@ -28,12 +31,12 @@ main.axf: $(SRC) $(CMSIS_SRC) $(DRIVER_SRC)
 	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o main.axf
 
 main.bin: main.axf
-	$(OBJCOPY) -O binary main.axf main.bin
-	$(CHECKSUM) -p LPC1769 -v main.bin
+	$(OBJCOPY) -O binary --pad-to 0x1000 main.axf main.bin
+	$(CHECKSUM) main.bin
 
 clean:
 	rm -f main.axf main.bin
 
 flash: all
 	@echo "Cargando código ($(SRC)) al LPC1769..."
-	$(LINKSERVER) flash LPC1769 load -e main.bin:0x00000000
+	$(LINKSERVER) flash LPC1769 load main.bin:0x00000000
