@@ -1,0 +1,10 @@
+argpase/
+FIODIR/
+np/
+queue/
+serial/
+serial.tools.list_ports/
+structs/
+sys/
+threading/
+time/
